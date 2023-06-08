@@ -16,7 +16,7 @@ cpu_data = prom.custom_query(query='avg by (endpoint) (process_cpu_seconds_total
 
 cpu_max_over_data = prom.custom_query(query='max_over_time(process_cpu_seconds_total{job="monitoring"}'
                                             '[1686219773s:1686228360s]) - '
-                                            'process_cpu_seconds_total{job="monitoring"}@1686219773s')
+                                            'process_cpu_seconds_total{job="monitoring"}@1686219773')
 
 memory_usage = prom.custom_query(query='max_over_time(process_resident_memory_bytes{job="monitoring"}'
                                        '[1686231098s:1686231143s]) - '
@@ -24,9 +24,9 @@ memory_usage = prom.custom_query(query='max_over_time(process_resident_memory_by
 
 print(cpu_max_over_data)
 print(memory_usage)
-print("collected metrics")
-print("memory data: ", memory_data)
-print("CPU data: ", cpu_data)
+# print("collected metrics")
+# print("memory data: ", memory_data)
+# print("CPU data: ", cpu_data)
 
 # Connect to PostgreSQL
 # conn = psycopg2.connect(
@@ -38,11 +38,11 @@ print("CPU data: ", cpu_data)
 # cur = conn.cursor()
 
 # Insert the data into the database
-for row in memory_data:
-    # endpoint = row["metric"]["endpoint"]
-    response_time = row["value"][1]
-    timestamp = row["value"][0]
-    print(response_time, timestamp)
+# for row in memory_data:
+#     # endpoint = row["metric"]["endpoint"]
+#     response_time = row["value"][1]
+#     timestamp = row["value"][0]
+#     print(response_time, timestamp)
     # cur.execute("INSERT INTO response_times (endpoint, response_time, timestamp) VALUES (%s, %s, %s)",
     #             (endpoint, response_time, timestamp))
 
