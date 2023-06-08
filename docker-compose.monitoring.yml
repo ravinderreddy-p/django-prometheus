@@ -5,7 +5,7 @@ services:
       context: ./hello_world
       dockerfile: Dockerfile
     container_name: app1
-    command: python manage.py runserver 0.0.0.0:8000:1
+    command: python manage.py runserver 0.0.0.0:8000
     ports:
       - 8000:8000
 
